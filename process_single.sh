@@ -3,6 +3,7 @@
 script_dir=$(dirname "$0")
 source_folder="$script_dir/original"
 destination_folder="$script_dir/opus"
+input_file=$1
 
 mkdir -p "$destination_folder"
 
