@@ -15,7 +15,7 @@ process_file() {
 
     GAIN=$(ffprobe -v error -show_entries format_tags=REPLAYGAIN_TRACK_GAIN \
         -of default=noprint_wrappers=1:nokey=1 "$file" | sed 's/ dB//')
-    ffmpeg -hide_banner -loglevel error -i "$file" -af "silenceremove=start_periods=1:start_silence=1.5:start_threshold=-30dB,areverse,silenceremove=start_periods=1:start_silence=1.5:start_threshold=-30dB,areverse,volume=${GAIN}dB" -c:a flac -compression_level 10 "$destination_folder/$file_without_extension.flac"
+    ffmpeg -v quiet -i "$file" -af "silenceremove=start_periods=1:start_silence=1.5:start_threshold=-30dB,areverse,silenceremove=start_periods=1:start_silence=1.5:start_threshold=-30dB,areverse,volume=${GAIN}dB" -c:a flac -compression_level 10 "$destination_folder/$file_without_extension.flac"
 
     # Use kid3-cli to manage metadata
     kid3-cli -c "select \"$file\"" -c "copy 2" -c "select \"$destination_folder/$file_without_extension.flac\"" -c "paste 2" -c "save"
