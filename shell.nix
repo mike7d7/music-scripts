@@ -14,7 +14,7 @@ in
       #   withFdkAac = true;
       #   withUnfree = true;
       # })
-      ffmpeg
+      ffmpeg_8
       rsgain
       mediainfo
       par2cmdline-turbo
