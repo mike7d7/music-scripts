@@ -4,19 +4,19 @@ let
     config = {
       allowUnfree = true;
     };
-    overlays = [ ];
+    overlays = [];
   };
 in
-
-pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [
-    kid3
-    # (pkgs.ffmpeg.override {
-    #   withFdkAac = true;
-    #   withUnfree = true;
-    # })
-    ffmpeg
-    rsgain
-    mediainfo
-  ];
-}
+  pkgs.mkShell {
+    nativeBuildInputs = with pkgs; [
+      kid3
+      # (pkgs.ffmpeg.override {
+      #   withFdkAac = true;
+      #   withUnfree = true;
+      # })
+      ffmpeg
+      rsgain
+      mediainfo
+      par2cmdline-turbo
+    ];
+  }
