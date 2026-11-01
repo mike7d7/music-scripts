@@ -3,6 +3,7 @@
 script_dir=$(dirname "$0")
 source_folder="$script_dir/original"
 destination_folder="$script_dir/flac"
+resize_script="$script_dir/ResizeAlbumArt.qml"
 
 mkdir -p "$destination_folder"
 
@@ -19,6 +20,9 @@ process_file() {
 
         # Use kid3-cli to manage metadata
         kid3-cli -c "select \"$file\"" -c "copy 2" -c "select \"$destination_folder/$file_without_extension.flac\"" -c "paste 2" -c "save"
+
+        # Resize album cover to 340x340, if another resolution is wanted, change ResizeAlbumArt.qml
+        kid3-cli -c "select \"$destination_folder/$file_without_extension.flac\"" -c "execute @qml $resize_script" -c "save"
 }
 
 max_jobs=$(nproc)
