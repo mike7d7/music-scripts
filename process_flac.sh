@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 script_dir=$(dirname "$0")
 source_folder="$script_dir/original"
