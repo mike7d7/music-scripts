@@ -8,6 +8,7 @@ Currently it does the following:
 - Trims silence at the start and end of every song.
 - Adds ReplayGain tag for volume normalization.
 - Compress to multiple formats to save space while maintaining quality.
+- Resizes album covers (Currently only on `process_flac.sh`).
 
 ## Usage
 
